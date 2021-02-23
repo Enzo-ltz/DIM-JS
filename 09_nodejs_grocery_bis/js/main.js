@@ -16,12 +16,32 @@ document.addEventListener("DOMContentLoaded", () => {
 	form.querySelector("button").addEventListener("click", () => {
 		let name = form.querySelector("input[name=name]").value
 		let quantity = form.querySelector("input[name=quantity]").value
-		fetch("/add?name="+name+"&quantity="+quantity)
-			.then((response) => response.json() )
-			.then((data) => {
-				display({ name: name, quantity: quantity })
-				console.log("added")
-			})
+
+		let data = {
+			name: name,
+			quantity: quantity
+		}
+
+		fetch("/add", {
+			headers: {
+			  'Accept': 'application/json',
+			  'Content-Type': 'application/json'
+			},
+			method: "POST",
+			body: JSON.stringify(data)
+		})
+		.then((response) => response.json())
+		.then((stuff) => {
+			display(stuff)
+			console.log(stuff)
+		})
+
+		// fetch("/add?name="+name+"&quantity="+quantity)
+		// 	.then((response) => response.json() )
+		// 	.then((stuff) => {
+		// 		display(stuff)
+		// 		console.log(stuff)
+		// 	})
 	})
 
 

@@ -2,12 +2,19 @@
 const express = require("express")
 const app = express()
 
-let groceryList = [
-	{ name: "Bière", quantity: 42 },
-	{ name: "PQ", quantity: 120 },
-	{ name: "Pâtes", quantity: 73 },
-	{ name: "Jambon cru", quantity: 73 },
-]
+const bodyParser = require("body-parser")
+app.use(bodyParser.json())
+
+//-----------------------------------------CONNEXION BD
+let MongoClient = require("mongodb").MongoClient;
+const client = new MongoClient("mongodb://localhost:27017", 
+    { useNewUrlParser: true, useUnifiedTopology: true });
+
+let db = null;
+client.connect(err => {
+    db = client.db("grocery")
+})
+
 
 
 app.use("/css", express.static(__dirname + "/css"))
@@ -23,30 +30,37 @@ app.get("/", (req, res) => {
 
 
 app.get("/list", (req, res) => {
-	res.json(groceryList)
+	db.collection("stufftobuy").find({}).toArray((error, docs) => {
+		console.log(docs)
+		res.json(docs)
+	})
 })
 
-app.get("/add", (req, res) => {
-	groceryList.push(req.query)
-	res.json({ ok: true })
+app.post("/add", (req, res) => {
+	let stuff = req.body
+	stuff.id = Date.now()+""+Math.floor(Math.random()*100000)
+	db.collection("stufftobuy").insertOne(stuff, (err, docs) => {
+		res.json(stuff)
+	})
 })
 
 app.get("/quantity/:min/:max", (req, res) => {
 
-	let list = []
-	for(let stuff of groceryList)
-		if (stuff.quantity > req.params.min && stuff.quantity < req.params.max)
-			list.push(stuff)
-	res.json(list)
+	let min = parseInt(req.params.min)
+	let max = parseInt(req.params.max)
+	db.collection("stufftobuy").find({
+		quantity : {$gt: min, $lt:max}
+	}).toArray((err, docs)=> {
+		res.json(docs)
+	})
+	
 
 })
 
 app.get("/info/:name", (req, res) => {
-	for(let stuff of groceryList)
-		if (stuff.name == req.params.name)
-			res.json(stuff)
-	res.json({error: "not found"})
-
+	db.collection("stufftobuy").find({name: req.params.name}).toArray((err, docs) => {
+		res.json(docs)
+	})
 })
 
 
