@@ -1,0 +1,15 @@
+{
+  "name": "08_nodejs_grocery",
+  "version": "1.0.0",
+  "description": "Grocery list to train NodeJS",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "EL",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1"
+  }
+}

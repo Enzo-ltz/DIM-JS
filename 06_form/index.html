@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Boring form</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+<body>
+
+    <header>
+        <h1>Boring form</h1>
+    </header>
+
+    <form method='post' action=''>
+        <div>
+            <label for='firstname'>Firstname</label>
+            <input type="text" name="firstname" id='firstname'/>
+        </div>
+        <div>
+            <label for='firstname'>Lastname</label>
+            <input type="text" name="lastname" id='lastname'/>
+        </div>
+        <div>
+            <label for='age'>Age</label>
+            <input type="range" min="18" max="120" name="age" id="age"/>
+        </div>
+        <div>
+            <label for='tea'>Tea</label>
+            <input type="radio" name="teaorcoffee" value="tea" id='tea'/> 
+            <label for='tea'>Coffee</label>
+            <input type="radio" name="teaorcoffee" value="coffee" id='coffee'/> 
+        </div>
+        <div>
+            <label for='sum'>1+1 = ?</label>
+            <select name='sum' id='sum'>
+                <option value=''></option>
+                <option value='42'>42</option>
+                <option value='2'>2</option>
+                <option value='10'>10</option>
+                <option value='11'>11</option>
+            </select>
+        </div>
+        <div>
+            <label for='message'>Message</label>
+            <textarea name='message' id='message'></textarea>    
+        </div>
+        <div>
+            <label for='action'></label>
+            <input type="submit" name="action" id='action' value='So boring...'>
+        </div>
+
+
+
+    </form>
+
+
+
+
+
+    <script src='main.js'></script>
+</body>
+</html>

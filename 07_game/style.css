@@ -1,0 +1,14 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    overflow: hidden;
+}
+
+canvas {
+    background: rgb(255,237,22);
+background: linear-gradient(0deg, rgba(255,237,22,1) 0%, rgba(234,110,255,1) 43%, rgba(255,109,35,1) 100%);
+    cursor: none;
+}

@@ -1,0 +1,110 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    text-align: center;
+    background-color: black;
+    padding: 20px;
+    color: white;
+    text-transform: uppercase;
+}
+
+form {
+    width: 500px;
+    margin: 50px auto;
+}
+
+form div {
+    margin: 10px 0px;
+    padding: 30px;
+    background-color: rgba(228, 144, 0, 0.603);
+    border-radius: 2px;
+}
+
+form label {
+    display: block;
+}
+
+textarea, input[type=text] {
+    width: 95%;
+    border: none;
+}
+
+input[type=submit] {
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 10px 30px;
+    transition: all 0.5s ease;
+}
+
+input[type=submit]:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+}
+
+.souitch {
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+    background-color: white;
+    border-radius: 20px;
+    position: relative;
+    vertical-align: middle;
+    margin: 0px 20px;
+}
+
+.ball {
+    position: absolute;
+    left: 7px;
+    top: 7px;
+    right: 23px;
+    width: 16px;
+    height: 16px;
+    background-color: black;
+    border-radius: 2px;
+    transition: all 0.5s ease;
+    transform: rotate(0deg);
+}
+
+.ball.clicked {
+    left: 56px;
+    right: 4px;
+    transform: rotate(180deg);
+}
+
+.souitchLabel {
+    display: inline-block;
+    color: black;
+    vertical-align: middle;
+}
+
+
+/* SELECT */
+
+.selectAccess {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.valueElement{
+    position: absolute;
+    background-color: black;
+    
+}
+
+
+
+
+
+
+
